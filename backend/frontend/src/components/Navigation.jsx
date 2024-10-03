@@ -35,12 +35,12 @@ export default function Navigation() {
                 </div>
 
                 <div className='flex items-center gap-3'>
-                    <div className="flex items-center px-3 py-1 bg-gray-200 rounded">
-                        <FaSearch className="text-gray-500 mr-2" />
+                    <div className="flex items-center px-3 py-1 w-32 md:w-52 bg-gray-200 rounded">
+                        <FaSearch className="text-black mr-2 flex-shrink-0" /> {/* Ensure the icon doesn't shrink */}
                         <input
                             type="text"
                             placeholder="Search"
-                            className="bg-transparent outline-none text-gray-700"
+                            className="bg-transparent outline-none text-gray-700 w-full" /* Input fills the remaining space */
                         />
                     </div>
                     <div className='text-xl'><FaCartPlus /></div>
@@ -48,6 +48,7 @@ export default function Navigation() {
                         {isSidebarOpen ? <FaTimes /> : <FaBars />}
                     </div>
                 </div>
+
             </div>
 
             {/* Sidebar for mobile */}

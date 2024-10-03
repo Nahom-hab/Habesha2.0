@@ -1,32 +1,22 @@
 import React from 'react'
-import Navigation from '../components/Navigation'
 import home1 from '../assets/home1.png'
 import shadow from '../assets/ellipse.png'
 import img1 from '../assets/Group1.png'
 import img2 from '../assets/Group2.png'
 import img3 from '../assets/Group5.png'
 import img4 from '../assets/Group23.png'
-
 import photo1 from '../assets/women1.jpeg'
 import photo2 from '../assets/men1.jpeg'
 import photo3 from '../assets/couple1.jpeg'
 import photo4 from '../assets/couple2.jpeg'
-
 import big1 from '../assets/big1.png'
 import big2 from '../assets/big2.png'
 import balck from '../assets/balck.png'
 import haben from '../assets/haben.jpeg'
 import { Link, useNavigate } from 'react-router-dom'
 
-
-
-
-
-
-
 export default function Home() {
     const navigate = useNavigate()
-
     return (
         <div className='bg-primary'>
             <div className='absolute top-4 right-2 hidden md:block   md:right-10 md:top-0 '><img className='w-[560px]' src={home1} alt="" /></div>
@@ -37,7 +27,6 @@ export default function Home() {
                 <div className='font-extrabold flex flex-col text-[22px] leading-tight'><span className='whitespace-nowrap'>Explore the World</span> <span >Of <span className='text-gray-600'>Habesha</span></span> </div>
                 <div className=' font-semibold mt-4 hidden md:flex text-[10px] flex-col'><span className=''>From the vibrant hues of our traditional fabrics to the </span><span>intricate patterns that adorn each piece</span></div>
                 <div className='font-semibold flex text-white  md:midden mt-4 text-[10px] flex-col'>From the vibrant hues of our traditional fabrics to the intricate patterns that adorn each piece</div>
-
                 <div className='flex justify-end pr-5'>
                     <div onClick={() => navigate('/shop')} className='mt-6 px-4 py-1 text-white animate-bounce text-sm w-fit rounded-lg bg-[#A78C6E]'>Shop Now</div>
                 </div>
@@ -58,21 +47,9 @@ export default function Home() {
                 </div>
 
             </div>
-            <div className='py-8 md:mt-8 mt-4 flex ml-[-4px] md:justify-center'>
-                <div className=' gap-1 grid grid-cols-2 md:gap-8'>
-                    <div className='space-y-2 md:space-y-0 md:space-x-8 md:flex'>
-                        <img className='w-[250px]' src={img2} alt="" />
-                        <img className='w-[250px]' src={img1} alt="" />
-                    </div>
 
-                    <div className='space-y-2 md:space-y-0 md:space-x-8 md:flex'>
-                        <img className='w-[250px]' src={img4} alt="" />
-                        <img className='w-[250px] ' src={img3} alt="" />
-                    </div>
-                </div>
-            </div>
             <div>
-                <h1 className='w-full text-center mb-3 md:mb-8 mt-3 md:mt-6 text-xl md:text-4xl font-bold'> Exclusive Products</h1>
+                <h1 className='w-full text-center mb-3 md:mb-8 mt-8 md:mt-10 text-2xl md:text-4xl font-bold'> Exclusive Products</h1>
                 <div className='flex w-full justify-between md:flex-row flex-col gap-1'>
                     <div className='flex md:h-[420px] h-[300px] gap-1'>
                         <div className='flex flex-col  w-[50%] items-center'>
@@ -129,6 +106,7 @@ export default function Home() {
                 </div>
             </div>
 
+
             <div className='bg-secondary flex md:flex-row  flex-col md:justify-between md:pl-20 w-full'>
 
                 <div className='flex w-full md:w-[40%] md:justify-normal justify-center md:pt-2 pt-8'>
@@ -147,6 +125,8 @@ export default function Home() {
                     <img className='w-[100%]' src={big2} alt="" />
                 </div>
             </div>
+
+
             <div className='mt-2 flex md:flex-row mb-[300px] flex-col md:mb-2 justify-between'>
                 <div className='md:w-[77%] w-full   h-[300px]  relative'>
                     <img src={balck} alt="" className="w-full object-cover h-[600px] " />
@@ -162,6 +142,20 @@ export default function Home() {
                     <img className=' object-cover h-[600px]' src={haben} alt="" />
                 </div>
 
+            </div>
+
+            <div className='py-8 md:mt-8 mt-4 flex ml-[-4px] md:justify-center'>
+                <div className=' gap-1 grid grid-cols-2 md:gap-8'>
+                    <div className='space-y-2 md:space-y-0 md:space-x-8 md:flex'>
+                        <img className='w-[250px]' src={img2} alt="" />
+                        <img className='w-[250px]' src={img1} alt="" />
+                    </div>
+
+                    <div className='space-y-2 md:space-y-0 md:space-x-8 md:flex'>
+                        <img className='w-[250px]' src={img4} alt="" />
+                        <img className='w-[250px] ' src={img3} alt="" />
+                    </div>
+                </div>
             </div>
 
 

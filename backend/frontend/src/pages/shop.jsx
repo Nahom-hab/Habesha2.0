@@ -83,7 +83,7 @@ export default function Shop() {
     });
 
     return (
-        <div className='bg-primary flex flex-col pt-10 items-center justify-center pb-44'>
+        <div className='bg-primary flex flex-col md:pt-10 items-center justify-center pb-44'>
             <div className='lg:[w-90%] w-[98%] xl:w-[82%]'>
                 <div className='flex justify-between items-center'>
                     <div className='md:text-4xl text-3xl py-3 ml-2 pb-6 flex justify-between font-semibold'>
