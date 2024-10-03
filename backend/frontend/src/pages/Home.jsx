@@ -16,7 +16,7 @@ import big1 from '../assets/big1.png'
 import big2 from '../assets/big2.png'
 import balck from '../assets/balck.png'
 import haben from '../assets/haben.jpeg'
-import Footer from '../components/Footer'
+import { Link, useNavigate } from 'react-router-dom'
 
 
 
@@ -25,11 +25,12 @@ import Footer from '../components/Footer'
 
 
 export default function Home() {
+    const navigate = useNavigate()
+
     return (
         <div className='bg-primary'>
-            <Navigation />
             <div className='absolute top-4 right-2 hidden md:block   md:right-10 md:top-0 '><img className='w-[560px]' src={home1} alt="" /></div>
-            <div className='absolute top-4  z-10  block md:hidden   left-[-80px] '><img className='w-[400px]' src={home1} alt="" /></div>
+            <div className='absolute top-8  z-10  block md:hidden   left-[-80px] '><img className='w-[400px]' src={home1} alt="" /></div>
             <img className='absolute top-32 left-[-40px] block md:hidden ' src={shadow} alt="" />
             <div className='flex flex-col top-32 z-20 w-[200px]  absolute right-0 md:hidden'>
                 <div className='pl-1 text-[10px]'>Habesha is the best</div>
@@ -38,7 +39,7 @@ export default function Home() {
                 <div className='font-semibold flex text-white  md:midden mt-4 text-[10px] flex-col'>From the vibrant hues of our traditional fabrics to the intricate patterns that adorn each piece</div>
 
                 <div className='flex justify-end pr-5'>
-                    <button className='mt-6 px-4 py-1 text-white text-sm w-fit rounded-lg bg-[#A78C6E]'>Shop Now</button>
+                    <div onClick={() => navigate('/shop')} className='mt-6 px-4 py-1 text-white animate-bounce text-sm w-fit rounded-lg bg-[#A78C6E]'>Shop Now</div>
                 </div>
 
             </div>
@@ -48,7 +49,7 @@ export default function Home() {
                     <div className='pl-1'>Habesha is the best</div>
                     <div className='font-bold flex flex-col   md:text-[60px] leading-tight'><span className='whitespace-nowrap'>Explore the World</span> <span >Of <span className='text-gray-600'>Habesha</span></span> </div>
                     <div className='flex font-semibold mt-7 flex-col'>From the vibrant hues of our traditional fabrics to the <span>intricate patterns that adorn each piece</span></div>
-                    <button className='mt-6 px-4 py-1 text-white text-lg rounded-lg bg-[#A78C6E]'>Shop Now</button>
+                    <button onClick={() => navigate('/shop')} className='mt-6 px-4 py-1 text-white text-lg animate-bounce rounded-lg bg-[#A78C6E]'>Shop Now</button>
 
                 </div>
 
@@ -57,12 +58,17 @@ export default function Home() {
                 </div>
 
             </div>
-            <div className='py-8 mt-8 flex ml-[-4px] md:justify-center'>
-                <div className=' gap-1 grid grid-cols-4 md:gap-8'>
-                    <img className='md:w-[260px] w-[105px]' src={img2} alt="" />
-                    <img className='md:w-[260px] w-[105px]' src={img1} alt="" />
-                    <img className='md:w-[260px] w-[105px]' src={img4} alt="" />
-                    <img className='md:w-[260px] w-[105px]' src={img3} alt="" />
+            <div className='py-8 md:mt-8 mt-4 flex ml-[-4px] md:justify-center'>
+                <div className=' gap-1 grid grid-cols-2 md:gap-8'>
+                    <div className='space-y-2 md:space-y-0 md:space-x-8 md:flex'>
+                        <img className='w-[250px]' src={img2} alt="" />
+                        <img className='w-[250px]' src={img1} alt="" />
+                    </div>
+
+                    <div className='space-y-2 md:space-y-0 md:space-x-8 md:flex'>
+                        <img className='w-[250px]' src={img4} alt="" />
+                        <img className='w-[250px] ' src={img3} alt="" />
+                    </div>
                 </div>
             </div>
             <div>
@@ -114,7 +120,7 @@ export default function Home() {
                     <div className=' md:mb-24 p-4 w-fit justify-center items-start flex flex-col  md:px-10'>
                         <div className='flex flex-col text-[23px] md:text-[40px] text-start leading-tight whitespace-nowrap   font-bold mb-7'> <span>Dressing the Whole Family</span> <span>the Habesha Way</span> </div>
                         <div className='md:text-lg font-semibold md:w-full w-[320px] leading-tight text-start text-[12px]'>Dressing a whole family can be a fun and rewarding experience. It's an opportunity to express your family's unique style and personality through your clothing choices.</div>
-                        <div className='rounded-lg px-3 py-1 border w-fit border-black mt-2 md:mt-6'>Explore More</div>
+                        <Link to={'/family'} className='rounded-lg px-3 py-1 border w-fit animate-pulse border-black mt-2 md:mt-6'>Explore More</Link>
 
                     </div>
                 </div>
@@ -131,7 +137,7 @@ export default function Home() {
                         <div className='md:text-lg font-semibold md:w-full w-[320px]  leading-tight text-start text-[12px]'>Our Couples Section is designed to celebrate love, togetherness, and the journey that comes with building a life together
                             Our Couples Section is designed to celebrate love,
                         </div>
-                        <div className='rounded-lg px-3 py-1 border w-fit border-black mt-2 md:mt-5'>Explore More</div>
+                        <Link to={'/couples'} className='rounded-lg px-3 py-1 border w-fit animate-pulse border-black mt-2 md:mt-5'>Explore More</Link>
 
                     </div>
                 </div>
@@ -158,7 +164,6 @@ export default function Home() {
 
             </div>
 
-            <Footer />
 
         </div>
     )
