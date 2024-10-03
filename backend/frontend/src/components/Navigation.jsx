@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FaCartPlus, FaSearch, FaUser, FaBars, FaTimes } from 'react-icons/fa';
 import { Link, useLocation } from 'react-router-dom';
+import ha from '../assets/haba.png'
 
 export default function Navigation() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -15,7 +16,7 @@ export default function Navigation() {
     };
 
     const isActiveLink = (path) => {
-        return location.pathname === path ? 'bg-gray-400 text-white' : 'hover:bg-gray-200';
+        return location.pathname === path ? 'bg-[#A78C6E] text-white' : 'hover:bg-gray-200';
     };
 
     return (
@@ -23,15 +24,15 @@ export default function Navigation() {
             {/* Main navigation bar */}
             <div className='flex bg-primary py-5 justify-between px-5'>
                 <Link to={'/'} onClick={closeSidebar} className={`px-3 py-2 rounded `}>
-                    Habesha
+                    <img src={ha} alt="" />
                 </Link>
-                <div className='hidden md:flex gap-7'>
-                    <Link to={'/'} className={`px-3 py-2 rounded ${isActiveLink('/')}`}>Home</Link>
-                    <Link to={'/shop'} className={`px-3 py-2 rounded ${isActiveLink('/shop')}`}>Products</Link>
-                    <Link to={'/family'} className={`px-3 py-2 rounded ${isActiveLink('/family')}`}>Family</Link>
-                    <Link to={'/couples'} className={`px-3 py-2 rounded ${isActiveLink('/couples')}`}>Couples</Link>
-                    <Link to={'/aboutUs'} className={`px-3 py-2 rounded ${isActiveLink('/aboutUs')}`}>About Us</Link>
-                    <Link to={'/contactUs'} className={`px-3 py-2 rounded ${isActiveLink('/contactUs')}`}>Contact Us</Link>
+                <div className='hidden md:flex gap-3'>
+                    <Link to={'/'} className={`px-3 py-1 flex  items-center rounded ${isActiveLink('/')}`}>Home</Link>
+                    <Link to={'/shop'} className={`px-3 py-1 flex items-center rounded ${isActiveLink('/shop')}`}>Products</Link>
+                    <Link to={'/family'} className={`px-3 py-1 flex  items-center rounded ${isActiveLink('/family')}`}>Family</Link>
+                    <Link to={'/couples'} className={`px-3 py-1 flex  items-center rounded ${isActiveLink('/couples')}`}>Couples</Link>
+                    <Link to={'/aboutUs'} className={`px-3 py-1 flex   items-center rounded ${isActiveLink('/aboutUs')}`}>About Us</Link>
+                    <Link to={'/contactUs'} className={`px-3 py-1 flex items-center rounded ${isActiveLink('/contactUs')}`}>Contact Us</Link>
                 </div>
 
                 <div className='flex items-center gap-3'>

@@ -1,17 +1,26 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
 
+import ProductRoute from '../backend/route/product.route.js'
+import adminRoute from '../backend/route/admin.route.js'
+import FeedBackRoute from '../backend/route/feedback.route.js'
+import uploadRoute from '../backend/route/upload.route.js'
 
 
 const app = express();
 dotenv.config();
 app.use(cookieParser());
 
+mongoose.connect(process.env.MONGO_URI, {
+})
+    .then(() => console.log("MongoDB connected"))
+    .catch((error) => console.log("MongoDB connection error:", error));
 
 
 // Get the absolute path to our backend
@@ -20,6 +29,12 @@ const __dirname = path.dirname(__filename);
 
 app.use(cors());
 app.use(express.json());
+
+
+app.use('/product', ProductRoute)
+app.use('/feedback', FeedBackRoute)
+app.use('/admin', adminRoute)
+app.use('/upload', uploadRoute)
 
 
 // Serve static files from the frontend
