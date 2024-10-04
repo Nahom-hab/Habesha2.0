@@ -3,6 +3,7 @@ import { FaCartPlus, FaSearch, FaUser, FaBars, FaTimes } from 'react-icons/fa';
 import { Link, useLocation } from 'react-router-dom';
 import ha from '../assets/haba.png'
 import useProduct from '../zustand/useProduct';
+import FetchProducts from '../hooks/fetchproducts';
 
 export default function Navigation() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -11,6 +12,7 @@ export default function Navigation() {
     const toggleSidebar = () => {
         setIsSidebarOpen(!isSidebarOpen);
     };
+    FetchProducts()
 
     const closeSidebar = () => {
         setIsSidebarOpen(false);
