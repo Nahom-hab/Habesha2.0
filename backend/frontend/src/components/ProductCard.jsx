@@ -1,28 +1,59 @@
-import React, { useState } from 'react';
-import { FaFacebookF, FaInstagram, FaTwitter, FaPinterestP, FaLinkedinIn } from 'react-icons/fa'; // Importing React Icons
-import photo4 from '../assets/couple2.jpeg';
+import React, { useEffect, useState } from 'react';
+import { FaFacebookF, FaInstagram, FaTwitter, FaPinterestP, FaLinkedinIn, FaShoppingCart } from 'react-icons/fa'; // Importing React Icons
+import useProduct from '../zustand/useProduct';
 
 export default function ProductCard({ data }) {
     const [isPopupVisible, setIsPopupVisible] = useState(false);
+    const { cartProduct, setCartProduct } = useProduct();
+    const [productAddedPopup, setProductAddedPopup] = useState(false);
 
     const handleBuyNowClick = () => {
         setIsPopupVisible(true);
+    };
+
+    const handleAddToCart = () => {
+        const productExists = cartProduct.some(item => item._id === data._id);
+
+        if (!productExists) {
+            const cart = [...cartProduct, { ...data, quantity: 1 }];
+            setCartProduct(cart);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            setProductAddedPopup(true);
+        }
     };
 
     const closePopup = () => {
         setIsPopupVisible(false);
     };
 
+    // Automatically close the "product added" popup after 2 seconds
+    useEffect(() => {
+        let timeout;
+        if (productAddedPopup) {
+            timeout = setTimeout(() => {
+                setProductAddedPopup(false);
+            }, 2000); // Close after 2 seconds
+        }
+
+        return () => clearTimeout(timeout); // Cleanup timeout on component unmount
+    }, [productAddedPopup]);
+
     return (
         <div className="rounded-2xl bg-gray-200 pc:w-[355px] md:w-[300px] hover:shadow-xl transition-shadow duration-300 p-3 pb-0 ease-in-out">
+            {productAddedPopup && (
+                <div className='fixed top-10 right-5 bg-green-500 text-white p-3 rounded-lg shadow-lg'>
+                    {data.name} added to cart
+                </div>
+            )}
+
             {/* Product Image */}
-            <img className="w-full rounded-xl h-96 object-cover" src={data} alt="Product" />
+            <img className="w-full rounded-xl h-96 object-cover" src={data.images[0]} alt="Product" />
 
             {/* Product Details */}
             <div className="px-3 py-4">
                 <div className="flex justify-between items-center mb-2">
-                    <h2 className="font-semibold text-gray-800 text-lg truncate">Premium Jacket</h2>
-                    <span className="text-lg font-bold text-gray-800">$199.99</span>
+                    <h2 className="font-semibold text-gray-800 text-lg truncate">{data.name}</h2>
+                    <span className="text-lg font-bold text-gray-800">{data.price} birr</span>
                 </div>
 
                 <div className="flex justify-between items-center">
@@ -32,8 +63,11 @@ export default function ProductCard({ data }) {
                     >
                         Buy Now
                     </div>
-                    <div className="text-sm text-gray-500">
-                        <span className="font-semibold">4.5</span> ★
+                    <div onClick={handleAddToCart} className='top-2 right-3 items-center text-[12px] px-2 py-1 rounded-lg hover:opacity-50 hover:cursor-pointer bg-gray-300 flex gap-2'>
+                        <div className=' bg-gray-200 text-black px-2 py-1 rounded-lg'>
+                            Add to cart
+                        </div>
+                        <FaShoppingCart className='text-gray-700 group text-lg hover:text-gray-600' />
                     </div>
                 </div>
             </div>
@@ -89,7 +123,6 @@ export default function ProductCard({ data }) {
                     </div>
                 </div>
             )}
-
         </div>
     );
 }

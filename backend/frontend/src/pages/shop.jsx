@@ -1,28 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
-import photo1 from '../assets/women1.jpeg';
-import photo2 from '../assets/men1.jpeg';
-import photo3 from '../assets/couple1.jpeg';
-import photo4 from '../assets/couple2.jpeg';
+
 import ProductCard from '../components/ProductCard';
 import { FaChevronDown, FaFilter } from 'react-icons/fa';
 import { useLocation } from 'react-router-dom';
+import useProduct from '../zustand/useProduct';
 
-const products = [
-    { id: 1, name: 'Product 1', price: 25000, type: 'female', image: photo1 },
-    { id: 2, name: 'Product 2', price: 50000, type: 'male', image: photo2 },
-    { id: 3, name: 'Product 3', price: 75000, type: 'couple', image: photo3 },
-    { id: 4, name: 'Product 4', price: 90000, type: 'bridal', image: photo4 },
-    { id: 5, name: 'Product 1', price: 25000, type: 'female', image: photo1 },
-    { id: 6, name: 'Product 2', price: 50000, type: 'male', image: photo2 },
-    { id: 7, name: 'Product 3', price: 75000, type: 'couple', image: photo3 },
-    { id: 8, name: 'Product 4', price: 90000, type: 'bridal', image: photo4 },
-    { id: 9, name: 'Product 1', price: 25000, type: 'female', image: photo1 },
-    { id: 10, name: 'Product 2', price: 50000, type: 'male', image: photo2 },
-    { id: 11, name: 'Product 3', price: 75000, type: 'couple', image: photo3 },
-    { id: 12, name: 'Product 4', price: 90000, type: 'bridal', image: photo4 },
-];
+
 
 export default function Shop() {
+    const { products } = useProduct()
     const { pathname } = useLocation();
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -161,7 +147,7 @@ export default function Shop() {
                 {/* Product Grid */}
                 <div className='grid gap-2 pc2:grid-cols-3 grid-cols-1 iphone:grid-cols-2'>
                     {filteredProducts.map((product) => (
-                        <ProductCard key={product.id} data={product.image} />
+                        <ProductCard key={product._id} data={product} />
                     ))}
                 </div>
             </div>

@@ -14,12 +14,14 @@ import big2 from '../assets/big2.png'
 import balck from '../assets/balck.png'
 import haben from '../assets/haben.jpeg'
 import { Link, useNavigate } from 'react-router-dom'
+import Fetchproducts from '../hooks/fetchproducts'
 
 export default function Home() {
+    Fetchproducts()
     const navigate = useNavigate()
     return (
         <div className='bg-primary'>
-            <div className='absolute top-4 right-2 hidden md:block   md:right-10 md:top-0 '><img className='w-[560px]' src={home1} alt="" /></div>
+            <div className='absolute top-32 right-2 hidden md:block   md:right-12 md:top-8 '><img className='w-[560px]' src={home1} alt="" /></div>
             <div className='absolute top-8  z-10  block md:hidden   left-[-80px] '><img className='w-[400px]' src={home1} alt="" /></div>
             <img className='absolute top-32 left-[-40px] block md:hidden ' src={shadow} alt="" />
             <div className='flex flex-col top-32 z-20 w-[200px]  absolute right-0 md:hidden'>

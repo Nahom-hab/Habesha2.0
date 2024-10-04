@@ -4,7 +4,7 @@ import { isAdmin } from '../middelwere/isAdmin.js';
 
 const router = express.Router();
 
-router.post('/', isAdmin, createProduct);          // Create a new product
+router.post('/', createProduct);          // Create a new product
 router.get('/', getProducts);             // Get all products
 router.get('/:id', getProductById);       // Get a product by ID
 router.put('/:id', isAdmin, updateProduct);        // Update a product

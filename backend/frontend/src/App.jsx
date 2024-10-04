@@ -1,5 +1,4 @@
 import React from 'react'
-
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home'
 import Shop from './pages/shop'
@@ -9,6 +8,10 @@ import Footer from './components/Footer';
 import AboutUs from './pages/AboutUs';
 import Family from './pages/Family';
 import Couples from './pages/couples';
+import CartPage from './pages/cart';
+import AddProductPage from './pages/admin/addProduct';
+import Female from './pages/female';
+import Male from './pages/male';
 
 export default function App() {
   return (
@@ -22,6 +25,13 @@ export default function App() {
         <Route path='/aboutUs' element={<AboutUs />}></Route>
         <Route path='/family' element={<Family />}></Route>
         <Route path='/couples' element={<Couples />}></Route>
+        <Route path='/male' element={<Male />}></Route>
+        <Route path='/female' element={<Female />}></Route>
+        <Route path='/cart' element={<CartPage />}></Route>
+
+        <Route path='/add' element={<AddProductPage />}></Route>
+
+
 
 
 

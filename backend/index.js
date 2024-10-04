@@ -11,6 +11,7 @@ import ProductRoute from '../backend/route/product.route.js'
 import adminRoute from '../backend/route/admin.route.js'
 import FeedBackRoute from '../backend/route/feedback.route.js'
 import uploadRoute from '../backend/route/upload.route.js'
+import OrderRoute from '../backend/route/order.route.js'
 
 
 const app = express();
@@ -31,10 +32,12 @@ app.use(cors());
 app.use(express.json());
 
 
-app.use('/product', ProductRoute)
-app.use('/feedback', FeedBackRoute)
-app.use('/admin', adminRoute)
-app.use('/upload', uploadRoute)
+app.use('/api/product', ProductRoute)
+app.use('/api/feedback', FeedBackRoute)
+app.use('/api/admin', adminRoute)
+app.use('/api/upload', uploadRoute)
+app.use('/api/order', OrderRoute)
+
 
 
 // Serve static files from the frontend

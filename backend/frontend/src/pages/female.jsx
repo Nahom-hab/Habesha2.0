@@ -1,18 +1,19 @@
 import React, { useEffect, useRef, useState } from 'react'
-import cup3 from '../assets/couple/cou3.jpeg'
+import fam14 from '../assets/femaleee.jpeg'
 import { FaChevronDown, FaFilter } from 'react-icons/fa'
 import ProductCard from '../components/ProductCard'
 import { useLocation } from 'react-router-dom'
 import useProduct from '../zustand/useProduct'
 
 
-export default function Couples() {
-    const { products } = useProduct()
+
+export default function Female() {
     const [isFilterOpen, setIsFilterOpen] = useState(false);
     const filterRef = useRef(null);
+    const { products } = useProduct()
     const [priceRange, setPriceRange] = useState([0, 100000]);
-    const { pathname } = useLocation();
 
+    const { pathname } = useLocation();
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [pathname]);
@@ -26,8 +27,7 @@ export default function Couples() {
         setPriceRange([priceRange[0], parseInt(e.target.value)]);
     };
 
-
-
+    // Close filter when clicking outside
     useEffect(() => {
         function handleClickOutside(event) {
             if (filterRef.current && !filterRef.current.contains(event.target)) {
@@ -42,12 +42,12 @@ export default function Couples() {
         };
     }, [filterRef]);
 
-    // Filter products by price range and selected types
     const filteredProducts = products.filter((product) => {
+        const fam = product.productType === 'female'
         const inPriceRange = product.price >= priceRange[0] && product.price <= priceRange[1];
-        const couple = product.productType === 'couple'
 
-        return inPriceRange && couple;
+
+        return fam && inPriceRange;
     });
 
 
@@ -55,10 +55,10 @@ export default function Couples() {
     return (
         <div>
             <div className='w-full   h-[300px]  relative'>
-                <img src={cup3} alt="" className="w-full object-cover h-[400px] brightness-50" />
+                <img src={fam14} alt="" className="w-full object-cover h-[400px] brightness-50" />
 
                 <div className='absolute inset-0 flex flex-col mt-52 items-center justify-center gap-1 text-white'>
-                    <div className='md:text-5xl text-center  text-[25px] font-bold'>22+ Unique Couple Designs For You</div>
+                    <div className='md:text-5xl text-center  text-[25px] font-bold'>20+ Unique Female Habesha For You</div>
                     <div className='rounded-lg px-3 py-1 text-xl text-white border w-fit border-white mt-3 '>
                         Explore More
                     </div>
@@ -66,7 +66,7 @@ export default function Couples() {
             </div>
             <div className='flex w-full flex-col items-center mt-10 mb-20 justify-center'>
                 <div className='mt-[100px] w-[80%] flex justify-between'>
-                    <div className='md:text-4xl text-3xl font-semibold'>Family Habesha</div>
+                    <div className='md:text-4xl text-2xl mr-2 font-semibold'>Female Habesha</div>
                     <div>
                         <div className='relative'>
                             <div
@@ -107,8 +107,6 @@ export default function Couples() {
                                         <span>Max: ${priceRange[1]}</span>
                                     </div>
                                 </div>
-
-
 
                                 <button
                                     onClick={() => setIsFilterOpen(false)}

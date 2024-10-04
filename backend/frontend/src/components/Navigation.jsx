@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { FaCartPlus, FaSearch, FaUser, FaBars, FaTimes } from 'react-icons/fa';
 import { Link, useLocation } from 'react-router-dom';
 import ha from '../assets/haba.png'
+import useProduct from '../zustand/useProduct';
 
 export default function Navigation() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const location = useLocation();
-
+    const { cartProduct } = useProduct()
     const toggleSidebar = () => {
         setIsSidebarOpen(!isSidebarOpen);
     };
@@ -26,26 +27,32 @@ export default function Navigation() {
                 <Link to={'/'} onClick={closeSidebar} className={`px-3 py-2 rounded `}>
                     <img src={ha} alt="" />
                 </Link>
-                <div className='hidden md:flex gap-3'>
+                <div className='hidden text-[14px] lg:flex gap-1'>
                     <Link to={'/'} className={`px-3 py-1 flex  items-center rounded ${isActiveLink('/')}`}>Home</Link>
                     <Link to={'/shop'} className={`px-3 py-1 flex items-center rounded ${isActiveLink('/shop')}`}>Products</Link>
                     <Link to={'/family'} className={`px-3 py-1 flex  items-center rounded ${isActiveLink('/family')}`}>Family</Link>
                     <Link to={'/couples'} className={`px-3 py-1 flex  items-center rounded ${isActiveLink('/couples')}`}>Couples</Link>
+                    <Link to={'/male'} className={`px-3 py-1 flex   items-center rounded ${isActiveLink('/male')}`}>Male</Link>
+                    <Link to={'/female'} className={`px-3 py-1 flex items-center rounded ${isActiveLink('/female')}`}>Female</Link>
+
                     <Link to={'/aboutUs'} className={`px-3 py-1 flex   items-center rounded ${isActiveLink('/aboutUs')}`}>About Us</Link>
                     <Link to={'/contactUs'} className={`px-3 py-1 flex items-center rounded ${isActiveLink('/contactUs')}`}>Contact Us</Link>
                 </div>
 
-                <div className='flex items-center gap-3'>
-                    <div className="flex items-center px-3 py-1 w-32 md:w-52 bg-gray-200 rounded">
-                        <FaSearch className="text-black mr-2 flex-shrink-0" /> {/* Ensure the icon doesn't shrink */}
-                        <input
-                            type="text"
-                            placeholder="Search"
-                            className="bg-transparent outline-none text-gray-700 w-full" /* Input fills the remaining space */
-                        />
-                    </div>
-                    <div className='text-xl'><FaCartPlus /></div>
-                    <div className='md:hidden text-xl' onClick={toggleSidebar}>
+                <div className='flex items-center gap-5'>
+                    <Link to={'/cart'} className='text-3xl flex gap-2 items-center'>
+                        <div className='relative'>
+                            <FaCartPlus />
+                            {cartProduct.length === 0 ? ('') : (
+                                <div className='absolute  w-5 h-5 flex items-center justify-center text-[10px] rounded-full top-[-6px] right-[-5px] bg-red-500 text-white'>
+                                    {cartProduct.length}
+                                </div>
+                            )}
+
+                        </div>
+                        <div className='text-lg'>Cart</div>
+                    </Link>
+                    <div className='lg:hidden text-xl' onClick={toggleSidebar}>
                         {isSidebarOpen ? <FaTimes /> : <FaBars />}
                     </div>
                 </div>
@@ -59,6 +66,9 @@ export default function Navigation() {
                     <Link to={'/shop'} onClick={closeSidebar} className={`px-3 py-2 rounded ${isActiveLink('/shop')}`}>Products</Link>
                     <Link to={'/family'} onClick={closeSidebar} className={`px-3 py-2 rounded ${isActiveLink('/family')}`}>Family</Link>
                     <Link to={'/couples'} onClick={closeSidebar} className={`px-3 py-2 rounded ${isActiveLink('/couples')}`}>Couples</Link>
+                    <Link to={'/male'} onClick={closeSidebar} className={`px-3 py-1 rounded ${isActiveLink('/male')}`}>Male</Link>
+                    <Link to={'/female'} onClick={closeSidebar} className={`px-3 py-1 rounded ${isActiveLink('/female')}`}>Female</Link>
+
                     <Link to={'/aboutUs'} onClick={closeSidebar} className={`px-3 py-2 rounded ${isActiveLink('/aboutUs')}`}>About Us</Link>
                     <Link to={'/contactUs'} onClick={closeSidebar} className={`px-3 py-2 rounded ${isActiveLink('/contactUs')}`}>Contact Us</Link>
                 </div>
