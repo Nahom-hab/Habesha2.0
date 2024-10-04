@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import cup3 from '../assets/couple/cou3.jpeg'
+import cup3 from '../assets/cou3.jpeg'
 import { FaChevronDown, FaFilter } from 'react-icons/fa'
 import ProductCard from '../components/ProductCard'
 import { useLocation } from 'react-router-dom'

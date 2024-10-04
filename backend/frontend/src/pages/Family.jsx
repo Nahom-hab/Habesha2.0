@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import fam14 from '../assets/family/100.jpg'
+import fam14 from '../assets/100.jpg'
 import { FaChevronDown, FaFilter } from 'react-icons/fa'
 import ProductCard from '../components/ProductCard'
 import { useLocation } from 'react-router-dom'
